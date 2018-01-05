@@ -21,8 +21,10 @@ public class ReteenLockTest {
     }
 
     void doBusiness() {
-        for(int x=0; x<100; x++) {
-            Thread t = new Thread(new RunTask("run_"+x));
+
+        for(int x=0; x<10; x++) {
+            RunTask rt = new RunTask("runTask_"+x);
+            Thread t = new Thread(rt);
             t.setName("thread_"+x);
             threadArrayList.add(t);
         }
@@ -39,22 +41,7 @@ public class ReteenLockTest {
         System.out.println("the result count is :"+count);
     }
 
-    void executeTask() {
-        /*lock = new ReentrantLock();
-        lock.lock();*/
-        try {
-            int temp = count+1;
-            long timeOut = Math.round(Math.random()*100);
-            System.out.println("timeOut:"+timeOut);
-            Thread.sleep(timeOut);
-            this.setCount(temp);
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            /*lock.unlock();*/
-        }
 
-    }
 
 
     class RunTask implements Runnable{
@@ -66,7 +53,14 @@ public class ReteenLockTest {
 
         @Override
         public void run() {
-            executeTask();
+            System.out.println("CurrentThread is :"+ Thread.currentThread().getName());
+            count++;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("WakeUpThread is :"+ Thread.currentThread().getName());
         }
 
         public String getRunName() {
