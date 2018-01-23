@@ -1,7 +1,6 @@
 package com.jiangwei.nettytest.testone.reteenlock;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
