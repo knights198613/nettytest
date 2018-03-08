@@ -3,7 +3,7 @@ package com.jiangwei.nettytest.testone.queue;
 /**
  * Created by weijiang
  * Date: 2018/2/7
- * DESC:
+ * DESC: 数组queue
  */
 public class ArrayQueue {
 
